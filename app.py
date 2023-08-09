@@ -11,6 +11,13 @@ app = Flask(__name__)
 # Retrieve Bard API token from environment variable
 bard_api_token = os.environ.get('BARD_API_TOKEN')
 
+# Retrieve port number from environment variable
+port = int(os.environ.get('PORT', 5000))  # Default to 5000 if PORT is not set
+
+@app.route('/test', methods=['GET'])
+def test_route():
+    return jsonify({'done': 'final'})
+
 @app.route('/get-chat', methods=['POST'])
 def get_chat():
     try:
@@ -33,4 +40,4 @@ def get_chat():
         return jsonify({'error': 'An error occurred', 'details': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=port)
