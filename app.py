@@ -3,7 +3,7 @@ from bardapi import Bard
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+# final update
 load_dotenv()
 
 app = Flask(__name__)
